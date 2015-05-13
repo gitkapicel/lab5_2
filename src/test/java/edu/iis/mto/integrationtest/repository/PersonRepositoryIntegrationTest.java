@@ -52,6 +52,13 @@ public class PersonRepositoryIntegrationTest extends IntegrationTest {
 		assertEquals(2, personRepository.count());
 	}
 	
+	
+	@Test
+	public void testFindByNameLike(){
+		List<Person> people = personRepository.findByFirstNameLike( "Mar%" );
+		assertEquals( 2 , people.size() );
+	}
+	
 	@Test
 	public void testDeleteePerson(){
 		personRepository.delete( 1L );
