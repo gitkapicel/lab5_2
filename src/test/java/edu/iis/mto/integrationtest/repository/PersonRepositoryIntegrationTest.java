@@ -39,6 +39,18 @@ public class PersonRepositoryIntegrationTest extends IntegrationTest {
 		assertEquals(2, foundTestPersons.size());
 	}
 	
+	@Test
+	public void testUpdatePerson() {
+		Person person = personRepository.findOne(1L);
+		person.setLastName("Kowalski");
+		person.setFirstName("Jan");
+
+		personRepository.save(person);
+
+		assertEquals("Kowalski", personRepository.findOne(1L).getLastName());
+		assertEquals("Jan", personRepository.findOne(1L).getFirstName());
+		assertEquals(2, personRepository.count());
+	}
 	
 	@Test
 	public void testDeleteePerson(){
